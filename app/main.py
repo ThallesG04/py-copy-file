@@ -1,6 +1,6 @@
 def copy_file(command: str) -> None:
     parts = command.split()
-    _, file_name, new_file_name = parts
+    cp, file_name, new_file_name = parts
 
     if file_name == new_file_name:
         return
