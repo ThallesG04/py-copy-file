@@ -11,10 +11,13 @@ def copy_file(command: str) -> None:
 
     if file_name == new_file_name:
         return
+    try:
+        with (
+            open(file_name, mode="r") as file,
+            open(new_file_name, mode="w") as new_file
+        ):
+            content = file.read()
+            new_file.write(content)
 
-    with (
-        open(file_name, mode="r") as file,
-        open(new_file_name, mode="w") as new_file
-    ):
-        content = file.read()
-        new_file.write(content)
+    except FileNotFoundError:
+        return
